@@ -2,9 +2,11 @@
   <q-layout view="lHh Lpr lFf">
     <Header></Header>
     <Sidebar />
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <div class="container">
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </div>
   </q-layout>
 </template>
 
@@ -71,3 +73,8 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss">
+.container {
+  padding: 20vh 3vw 0 18vw;
+}
+</style>

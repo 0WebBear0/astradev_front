@@ -5,7 +5,7 @@
         <h2>LapLas</h2>
       </div>
       <ul class="sidebar_list">
-        <SidebarLink link="/orders" title="Мой профиль" />
+        <SidebarLink link="/form" title="Мой профиль" />
         <SidebarLink link="/hh" title="Вакансии" />
         <SidebarLink link="/habr" title="Статьи" />
         <SidebarLink link="/settings" title="Настройки" />
