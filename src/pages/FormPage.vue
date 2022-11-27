@@ -25,31 +25,33 @@
         class="blobPolygon__blob"
         v-for="item in domains"
         :key="item"
-        @click="
-          (item.openState = !item.openState), (zIndexCount += 1), someFunc(item)
-        "
-        :class="{ translate: item.openState == true }"
+        @click="()=>{
+          this.someFunc(item)
+        }"
         :style="{ 'z-index': item.zIndex }"
       >
         {{ item.name }}
-        <!-- <div class="subdomens" v-if="item.openState == true">
-            <div
-              class="subdomens__item"
-              v-for="subdomen in item?.subdomens"
-              :key="subdomen"
-            >
-              <h6>{{ subdomen.name }}</h6>
-              <div>+</div>
-            </div>
-          </div> -->
       </div>
+      <div
+        class="blobPolygon__blob"
+        v-if="itemSelected !== null"
+        key="selected"
+        @click="someFunc(null)"
+        :class="{ translate: true }"
+        :style="{ 'z-index': 1001 }"
+      >
+        {{ itemSelected.name }}
+      </div>
+      <div v-for="item in selectedTags" style="right: 0; bottom: 25%">
+        <div :key>{{item}}</div>
+      </div>
+      <div class="blobFooter"></div>
     </div>
-    <div class="blobFooter"></div>
   </div>
 </template>
 
 <script>
-import MainTree from "../../MainTree.json"
+import MainTree from "../../MainTreeFake.json"
 
 export default {
   name: "FormPage",
@@ -77,34 +79,66 @@ export default {
     getRandomArbitrary(min, max) {
       return Math.random() * (max - min) + min;
     },
+
     someFunc(item) {
-      item.zIndex = this.zIndexCount;
+      this.itemSelected = item
+      if (item?.canSelect === true){
+        this.selectedTags.push({id: "keyword"+ item.id, name: item.name, openState: false, zIndex: 1001})
+      }
+      if (item !== null){
+        for (let i = 0; i < MainTree.MainTree.length; i++) {
+          if (item.name === MainTree.MainTree[i].name){
+            this.domains = []
+            for (let j = 0; j < MainTree.MainTree[i].body.length; j++) {
+              this.domains.push({id: "subdomain" + i, name: MainTree.MainTree[i].body[j].name, openState: false, zIndex: 1000})
+            }
+          }
+          for (let j = 0; j < MainTree.MainTree[i].body.length; j++) {
+            if (item.name === MainTree.MainTree[i].body[j].name){
+              this.domains = []
+              for (let k = 0; k < MainTree.MainTree[i].body[j].body.length; k++) {
+                this.domains.push({
+                  id: "subSubdomain" + i,
+                  canSelect: true,
+                  name: MainTree.MainTree[i].body[j].body[k],
+                  openState: false,
+                  zIndex: 1000
+                })
+              }
+            }
+          }
+        }
+      }
+      else {
+        const Tree = MainTree.MainTree
+        this.domains = []
+        for (let i = 0; i < Tree.length; i++) {
+          this.domains.push({id: "domain" + i, name: Tree[i].name, openState: false, zIndex: 1000})
+        }
+      }
     },
 
-    // requrseSerch(Tree){
-    //   if ()
-    // }
   },
   data() {
     return {
       zIndexCount: 1001,
-      //   step: 1,
+      itemSelected: null,
+      selectedTags: [],
+
       hightDomains: [
-        { name: "Web", check: false },
-        { name: "Machine Learning", check: false },
-        { name: "Testing", check: false },
-        { name: "Big Data", check: false },
+        {name: "Web", check: false},
+        {name: "Machine Learning", check: false},
+        {name: "Testing", check: false},
+        {name: "Big Data", check: false},
       ],
-      domains: [
-        { id: 1, name: "Front-End", openState: false, zIndex: 1000}
-      ],
+      domains: [],
     };
   },
   created() {
-    const Tree = MainTree
-    console.log(Tree)
-
-    // this.requrseSerch(Tree)
+    const Tree = MainTree.MainTree
+    for (let i = 0; i < Tree.length; i++) {
+      this.domains.push({id: "domain" + i, name: Tree[i].name, openState: false, zIndex: 1000})
+    }
   }
 };
 </script>
@@ -141,6 +175,7 @@ export default {
     text-align: center;
     top: 100px;
   }
+
   position: relative;
   margin: 50px;
   flex-wrap: wrap;
@@ -160,6 +195,7 @@ export default {
   border-radius: 30px;
   margin: 0;
   box-shadow: 0vmin 0vmin 0 rgba(255, 255, 255, 0.17);
+
   &_list {
     margin-top: 2.5rem;
     display: flex;
@@ -167,6 +203,7 @@ export default {
     gap: 2rem;
     min-width: 50%;
   }
+
   &_item {
     cursor: pointer;
     padding: 5px 10px;
@@ -174,11 +211,13 @@ export default {
     color: #fff;
     background: rgba(255, 255, 255, 0.362);
     box-shadow: 1vmin 1vmin 0 rgba(255, 255, 255, 0.17);
+
     &.select {
       background: rgba(26, 197, 49, 0.3);
 
       box-shadow: 1vmin 1vmin 0 rgba(3, 30, 151, 0.37);
     }
+
     &:hover {
       box-shadow: 1.25vmin 1.25vmin 0 rgba(255, 255, 255, 0.17);
     }
@@ -193,6 +232,7 @@ export default {
   padding-bottom: 50vh;
   padding-top: 10vh;
   padding-left: 2vw;
+
   &__title {
     background: linear-gradient(45deg, #19ac0cce 0%, #3221c956 100%);
     border-radius: 20px;
@@ -207,6 +247,7 @@ export default {
     text-align: center;
     color: #fff;
   }
+
   &__blob {
     cursor: pointer;
     position: relative;
@@ -239,6 +280,7 @@ export default {
       margin: 0;
       box-shadow: 0vmin 0vmin 0 rgba(255, 255, 255, 0.17);
     }
+
     &.translate {
       z-index: 1009;
       position: fixed;
@@ -268,6 +310,7 @@ export default {
   width: 100%;
   display: flex;
   gap: 10px;
+
   &__item {
     padding: 10px 20px;
     color: #000;
@@ -351,6 +394,7 @@ export default {
     width: 80vw;
   }
 }
+
 @keyframes blobTranslate {
   0% {
     border-radius: 100% 75% / 90% 90%;
