@@ -6,6 +6,8 @@
 
 <script>
 
+import {apiMy} from "../boot/axios";
+
 export default {
   name: "HHPage",
   data() {
@@ -14,7 +16,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get("http://localhost:8080/api/keywords/hh?name=pidorasss")
+    apiMy.get("api/keywords/hh?name=pidorasss")
       .then(
         (res)=> {
           console.log(res)
