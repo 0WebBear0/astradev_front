@@ -18,13 +18,18 @@
   </div> -->
   <div>
     <div class="blobPolygon">
+      <h2 class="blobPolygon__title">
+        Выберите сферу в которой хотите развиваться
+      </h2>
       <div
         class="blobPolygon__blob"
         v-for="item in domains"
         :key="item"
-        @click="(item.openState = true), (zIndexCount += 1)"
+        @click="
+          (item.openState = !item.openState), (zIndexCount += 1), someFunc(item)
+        "
         :class="{ translate: item.openState == true }"
-        :style="{ 'z-index': zIndexCount }"
+        :style="{ 'z-index': item.zIndex }"
       >
         {{ item.name }}
         <!-- <div class="subdomens" v-if="item.openState == true">
@@ -46,9 +51,38 @@
 <script>
 export default {
   name: "FormPage",
+  beforeMount() {
+    setInterval(() => {
+      const hueta = document.getElementsByClassName("blobPolygon__blob");
+      for (let index = 0; index < hueta.length; index++) {
+        const item = hueta[index];
+        console.log("1");
+        item.style.transform = `translate(${this.getRandomArbitrary(
+          -20,
+          70
+        )}px, 
+        ${this.getRandomArbitrary(-20, 70)}px)`;
+
+        item.style.borderRadius = `${this.getRandomArbitrary(50, 100)}% 
+        ${this.getRandomArbitrary(50, 100)}% / ${this.getRandomArbitrary(
+          50,
+          100
+        )}%
+        ${this.getRandomArbitrary(75, 100)}%`;
+      }
+    }, 2000);
+  },
+  methods: {
+    getRandomArbitrary(min, max) {
+      return Math.random() * (max - min) + min;
+    },
+    someFunc(item) {
+      item.zIndex = this.zIndexCount;
+    },
+  },
   data() {
     return {
-      zIndexCount: 1000,
+      zIndexCount: 1001,
       //   step: 1,
       hightDomains: [
         { name: "Web", check: false },
@@ -63,26 +97,26 @@ export default {
           openState: false,
           subdomens: [{ name: "Vue" }, { name: "React" }, { name: "Angular" }],
         },
-        { id: 2, name: "Back-End", openState: false },
-        { id: 3, name: "Dev-Ops", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
-        { id: 4, name: "Cyber Security", openState: false },
+        { id: 2, name: "Back-End", openState: false, zIndex: 1000 },
+        { id: 3, name: "Dev-Ops", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
       ],
     };
   },
@@ -166,11 +200,27 @@ export default {
 }
 
 .blobPolygon {
-  background: linear-gradient(45deg, #0756c4 0%, #0644b75f 70%);
+  background: linear-gradient(45deg, #0756c4 0%, #0644b78d 70%);
   display: flex;
   flex-wrap: wrap;
   min-height: 100vh;
   padding-bottom: 50vh;
+  padding-top: 10vh;
+  padding-left: 2vw;
+  &__title {
+    background: linear-gradient(45deg, #19ac0cce 0%, #3221c956 100%);
+    border-radius: 20px;
+    box-shadow: 0.5vmin 1.25vmin 0 rgba(255, 255, 255, 0.17);
+    font-weight: 600;
+    z-index: 1010;
+    font-size: 30px;
+    margin: 0 17.5%;
+    width: 60%;
+    top: 5vh;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+  }
   &__blob {
     cursor: pointer;
     position: relative;
@@ -188,7 +238,8 @@ export default {
     background: #061f83fc;
     background-image: linear-gradient(45deg, #3221c956 0%, #37ed27fc 100%);
     box-shadow: -2vmin 5vmin 0 rgba(255, 255, 255, 0.234);
-    animation: blobAnim 15s linear infinite;
+    transition: all 5s;
+    // animation: blobAnim 15s linear infinite;
     &.full {
       z-index: 100;
       bottom: 0;
@@ -203,9 +254,9 @@ export default {
       box-shadow: 0vmin 0vmin 0 rgba(255, 255, 255, 0.17);
     }
     &.translate {
-      z-index: 100;
+      z-index: 1009;
       position: fixed;
-      bottom: -10vh;
+      bottom: -0vh;
       left: 40vw;
       animation: blobTranslate 1s linear;
       translate: all 6s, top 1s, bottom 1s;
@@ -244,7 +295,7 @@ export default {
 
 @keyframes blobAnim {
   0% {
-    border-radius: 90% 90% / 90% 90%;
+    border-radius: 100% 100% / 90% 90%;
     transform: translate(0px, 0px);
   }
   10% {
@@ -290,6 +341,7 @@ export default {
     transform: translate(0px, 0px);
   }
 }
+
 @keyframes blobBig {
   0% {
     border-radius: 100% 75% / 90% 90%;

@@ -1,0 +1,278 @@
+{
+    "MainTree": [
+        {
+            "size": 28
+        },
+        {
+            "name": "Theory",
+            "body": [
+                {
+                    "name": "OOP",
+                    "body": null
+                },
+                {
+                    "name": "SOLID",
+                    "body": null
+                },
+                {
+                    "name": "Algorithms and Structures Data",
+                    "body": [
+                        "Sorted",
+                        "Tree",
+                        "Grapf",
+                        "weighted graphs",
+                        "hash tables",
+                        "Stack",
+                        "Queue",
+                        "decision trees"
+                    ]
+                },
+                {
+                    "name": "Patterns",
+                    "body": [
+                        "Delegation pattern",
+                        "Functional design",
+                        "Immutable interface",
+                        "Marker interface",
+                        "Property container",
+                        "Event channel",
+                        "Abstract factory",
+                        "Factory method",
+                        "Decorator",
+                        "Facade",
+                        "Proxy",
+                        "Mediator",
+                        "Mediator",
+                        "Wrapper"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Web",
+            "body": [
+                {
+                    "name": "Front-end",
+                    "body": [
+                        "Bootstrap",
+                        "JavaScript",
+                        "Vue",
+                        "Quasar",
+                        "Vuetify",
+                        "Vux",
+                        "React",
+                        "Next",
+                        "Gatsby",
+                        "Blitz",
+                        "Angular",
+                        "Material2",
+                        "Ionic",
+                        "LumX",
+                        "UI Grid",
+                        "Supersonic",
+                        "Radian",
+                        "Suave UI",
+                        "JQuery",
+                        "TypeScript",
+                        "Elm",
+                        "Swift",
+                        "C#",
+                        "HTML",
+                        "CSS"
+                    ]
+                },
+                {
+                    "name": "Back-end",
+                    "body": [
+                        "Python",
+                        "Django",
+                        "FastAPI",
+                        "Flask",
+                        "PHP",
+                        "Laravel",
+                        "Cake PHP",
+                        "Symfony",
+                        "Java",
+                        "Spring",
+                        "Struts",
+                        "Vaadin",
+                        "Blade",
+                        "C#",
+                        ".NET",
+                        "Xamarin",
+                        "Perl",
+                        "Scala",
+                        "Akka",
+                        "Scala Chaos"
+                    ]
+                },
+                {
+                    "name": "DevOps",
+                    "body": [
+                        "Terraform",
+                        "Gitlab-CI",
+                        "Kubernetes",
+                        "Jenkins",
+                        "BitBucket",
+                        "FlywayDB",
+                        "LiquiBase",
+                        "Flocker",
+                        "CI/CD",
+                        "Cucumber",
+                        "SoapUI Pro",
+                        "Selenium",
+                        "LoadRunner",
+                        "Nexus",
+                        "Ansible",
+                        "Puppet",
+                        "AWS CloudFormation",
+                        "Amazon Web Services",
+                        "Azure",
+                        "Heroku",
+                        "OpenShift",
+                        "Docker",
+                        "DataDog",
+                        "Jira",
+                        "MatterMost"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Big Data",
+            "body": [
+                {
+                    "name": "Machine Learning",
+                    "body": [
+                        "tensorflow",
+                        "keras",
+                        "augmentation",
+                        "Scilit-Learn",
+                        "python",
+                        "computer vision",
+                        "NLP",
+                        "neuronet"
+                    ]
+                },
+                {
+                    "name": "Data Science",
+                    "body": [
+                        "numpy",
+                        "MATLAB",
+                        "R",
+                        "Spark",
+                        "SQL",
+                        "python",
+                        "math. an.",
+                        "pandas",
+                        "kNN",
+                        "Octave"
+                    ]
+                },
+                {
+                    "name": "Artificial Intelligence",
+                    "body": [
+                        "Machine Learning",
+                        "Deep learning"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Testing",
+            "body": [
+                {
+                    "name": "Manual",
+                    "body": [
+                        "monkey-testing",
+                        "gui-testing",
+                        "test-case",
+                        "checklist",
+                        "black box",
+                        "white box",
+                        "grey box"
+                    ]
+                },
+                {
+                    "name": "Automatic",
+                    "body": [
+                        "JUnit",
+                        "Testng",
+                        "mocha",
+                        "pytest",
+                        "allure",
+                        "pactum",
+                        "mock",
+                        "stub"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cyber-Security",
+            "body": [
+                {
+                    "name": "Security Administrator",
+                    "body": []
+                },
+                {
+                    "name": "Bug-Hunter",
+                    "body": []
+                },
+                {
+                    "name": "Pentest",
+                    "body": []
+                },
+                {
+                    "name": "Cyber Criminology",
+                    "body": []
+                },
+                {
+                    "name": "White Hat",
+                    "body": []
+                },
+                {
+                    "name": "Cyber Security dev",
+                    "body": []
+                }
+            ]
+        },
+        {
+            "name": "GameDev",
+            "body": [
+                {
+                    "name": "Game Tools dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Animation dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Engine dev",
+                    "body": []
+                },
+                {
+                    "name": "Gameplay dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Graphics dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Audio dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Client dev",
+                    "body": []
+                },
+                {
+                    "name": "Game Back-end dev",
+                    "body": []
+                }
+            ]
+        }
+    ]
+}

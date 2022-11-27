@@ -5,10 +5,10 @@
         <h2>LapLas</h2>
       </div>
       <ul class="sidebar_list">
-        <SidebarLink link="/orders" title="Мой профиль" />
-        <SidebarLink link="/" title="Лента" />
-        <SidebarLink link="/" title="Компетенции" />
-        <SidebarLink link="/" title="Настройки" />
+        <SidebarLink link="/form" title="Мой профиль" />
+        <SidebarLink link="/hh" title="Вакансии" />
+        <SidebarLink link="/habr" title="Статьи" />
+        <SidebarLink link="/settings" title="Настройки" />
       </ul>
     </div>
     <div class="sidebar_advertise">Здесь могла быть ваша реклама</div>
