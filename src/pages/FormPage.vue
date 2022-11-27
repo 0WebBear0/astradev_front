@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import MainTree from "../../MainTree.json"
+
 export default {
   name: "FormPage",
   beforeMount() {
@@ -56,14 +58,13 @@ export default {
       const hueta = document.getElementsByClassName("blobPolygon__blob");
       for (let index = 0; index < hueta.length; index++) {
         const item = hueta[index];
-        console.log("1");
         item.style.transform = `translate(${this.getRandomArbitrary(
           -20,
           70
-        )}px, 
+        )}px,
         ${this.getRandomArbitrary(-20, 70)}px)`;
 
-        item.style.borderRadius = `${this.getRandomArbitrary(50, 100)}% 
+        item.style.borderRadius = `${this.getRandomArbitrary(50, 100)}%
         ${this.getRandomArbitrary(50, 100)}% / ${this.getRandomArbitrary(
           50,
           100
@@ -79,6 +80,10 @@ export default {
     someFunc(item) {
       item.zIndex = this.zIndexCount;
     },
+
+    // requrseSerch(Tree){
+    //   if ()
+    // }
   },
   data() {
     return {
@@ -91,35 +96,16 @@ export default {
         { name: "Big Data", check: false },
       ],
       domains: [
-        {
-          id: 1,
-          name: "Front-End",
-          openState: false,
-          subdomens: [{ name: "Vue" }, { name: "React" }, { name: "Angular" }],
-        },
-        { id: 2, name: "Back-End", openState: false, zIndex: 1000 },
-        { id: 3, name: "Dev-Ops", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
-        { id: 4, name: "Cyber Security", openState: false, zIndex: 1000 },
+        { id: 1, name: "Front-End", openState: false, zIndex: 1000}
       ],
     };
   },
+  created() {
+    const Tree = MainTree
+    console.log(Tree)
+
+    // this.requrseSerch(Tree)
+  }
 };
 </script>
 

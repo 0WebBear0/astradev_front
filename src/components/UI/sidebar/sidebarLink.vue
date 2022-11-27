@@ -1,5 +1,5 @@
 <template>
-  <a target="_blank" class="sidebar_item" :href="link">
+  <a class="sidebar_item" :href="link">
     <div v-if="icon">
       <q-icon :name="icon" />
     </div>
