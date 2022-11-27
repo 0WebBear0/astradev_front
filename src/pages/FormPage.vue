@@ -42,9 +42,10 @@
       >
         {{ itemSelected.name }}
       </div>
-      <div v-for="item in selectedTags" style="right: 0; bottom: 25%">
-        <div :key>{{item}}</div>
+      <div v-for="(item, index) in selectedTags" :style="{top:(25+ index * 4)+ '%'}" style="position: fixed; right: 0; z-index: 1001; padding-right: 60px; font-size: 30px; color: white">
+        <div>{{item.name}}</div>
       </div>
+      <button class="button_next" @click="sendData" style="z-index: 10000">Далее</button>
       <div class="blobFooter"></div>
     </div>
   </div>
@@ -52,6 +53,7 @@
 
 <script>
 import MainTree from "../../MainTreeFake.json"
+import {apiMy} from "../boot/axios";
 
 export default {
   name: "FormPage",
@@ -118,6 +120,22 @@ export default {
       }
     },
 
+    sendData(){
+      let words = ""
+      for (let i = 0; i < this.selectedTags.length; i++) {
+        words += this.selectedTags[i].name+ ','
+      }
+      console.log(words)
+      apiMy.post("api/keywords?name=pidorasss&word="+words)
+        .then(
+          (res)=>{
+            this.$router.push("/")
+          }
+        )
+        .catch((err)=>{
+          console.log(err)
+        })
+    }
   },
   data() {
     return {

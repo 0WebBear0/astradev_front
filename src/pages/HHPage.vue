@@ -19,7 +19,7 @@
               Максимальная зарплата: {{ item.minSal }}₽
             </div>
             <div class="statistic_founds">
-              Максимальная зарплата: {{ item.avgSal }}₽
+              Средняя зарплата: {{ item.avgSal }}₽
             </div>
           </div>
         </div>

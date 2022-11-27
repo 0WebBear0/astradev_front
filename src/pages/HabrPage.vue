@@ -9,7 +9,7 @@
           </div>
           <div class="habr_itemTopRight">
             <div class="habr_dots">
-              <a class="" :href="item.url"> Перейти к статье </a>
+              <a class="" :href="'https://' +item.url" target="_blank"> Перейти к статье </a>
             </div>
           </div>
         </div>
