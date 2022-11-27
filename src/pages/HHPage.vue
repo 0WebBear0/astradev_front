@@ -1,56 +1,36 @@
 <template>
   <div>
-    {{ response }}
-    <div class="hh_container">
-      <div class="hh_item">
+    <div class="hh_container" v-if="hhItems !== null">
+      <div class="hh_item" v-for="item in hhItems" :key="item">
         <div class="hh_itemTop">
           <div class="hh_itemTopLeft">
-            <div class="hh_name">Ключевое слово</div>
+            <div class="hh_name">Ключевое слово: {{ item.word }}</div>
           </div>
         </div>
         <div class="hh_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit facilis.
+          <div class="statistic">
+            <div class="statistic_founds">
+              Количество вакансий: {{ item.founds }}
+            </div>
+            <div class="statistic_founds">
+              Минимальная зарплата: {{ item.maxSal }}₽
+            </div>
+            <div class="statistic_founds">
+              Максимальная зарплата: {{ item.minSal }}₽
+            </div>
+            <div class="statistic_founds">
+              Максимальная зарплата: {{ item.avgSal }}₽
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hh_item">
-        <div class="hh_itemTop">
-          <div class="hh_itemTopLeft">
-            <div class="hh_name">Ключевое слово</div>
-          </div>
-        </div>
-        <div class="hh_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit facilis.
-        </div>
-      </div>
-      <div class="hh_item">
-        <div class="hh_itemTop">
-          <div class="hh_itemTopLeft">
-            <div class="hh_name">Ключевое слово</div>
-          </div>
-        </div>
-        <div class="hh_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit facilis.
-        </div>
-      </div>
-      <div class="hh_item">
-        <div class="hh_itemTop">
-          <div class="hh_itemTopLeft">
-            <div class="hh_name">Ключевое слово</div>
-          </div>
-        </div>
-        <div class="hh_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit facilis.
-        </div>
-      </div>
-      <div class="hh_item">
-        <div class="hh_itemTop">
-          <div class="hh_itemTopLeft">
-            <div class="hh_name">Ключевое слово</div>
-          </div>
-        </div>
-        <div class="hh_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit facilis.
-        </div>
+    </div>
+    <div class="hh_loader" v-else>
+      <div class="hh_container">
+        <div class="hh_loaderItem"><q-skeleton width="60vw" height="150px" /></div>
+        <div class="hh_loaderItem"><q-skeleton width="60vw" height="150px" /></div>
+        <div class="hh_loaderItem"><q-skeleton width="60vw" height="150px" /></div>
+        <div class="hh_loaderItem"><q-skeleton width="60vw" height="150px" /></div>
       </div>
     </div>
   </div>
@@ -73,6 +53,7 @@ export default {
       .then((res) => {
         console.log(res);
         this.response = res.data;
+        this.hhItems = res.data;
       })
       .catch((err) => {
         console.log(err);
@@ -89,9 +70,17 @@ export default {
     flex-wrap: wrap;
     gap: 1.5rem;
   }
+  &_loader {
+  }
+  &_loaderItem {
+    &:nth-child(2n) {
+      justify-self: flex-end;
+      margin-left: auto;
+    }
+  }
   &_item {
-    min-width: 70vw;
-    max-width: 70vw;
+    min-width: 60vw;
+    max-width: 60vw;
     border-radius: 12px;
     padding: 1rem 1.5rem;
     color: #000;

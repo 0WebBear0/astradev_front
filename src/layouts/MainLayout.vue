@@ -76,5 +76,8 @@ export default defineComponent({
 <style lang="scss">
 .container {
   padding: 20vh 3vw 0 18vw;
+  @media (max-width: 768px) {
+    padding: 20vh 5vw;
+  }
 }
 </style>
