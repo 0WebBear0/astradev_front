@@ -34,6 +34,10 @@ export default {
   width: 100%;
   max-width: 100vw;
   box-sizing: border-box;
+  @media (max-width: 768px) {
+    padding-left: 3rem;
+    min-height: 12.5vh;
+  }
   &_container {
     display: flex;
     justify-content: space-between;
@@ -43,10 +47,16 @@ export default {
   &_title {
     font-size: 26px;
     font-weight: 500;
+    @media (max-width: 768px) {
+      font-size: 22px;
+    }
   }
   &_links {
     display: flex;
     gap: 3rem;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   &_profile {
     display: flex;

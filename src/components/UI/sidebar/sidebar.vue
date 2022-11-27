@@ -43,6 +43,9 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    left: -100vw;
+  }
   &_container {
   }
   &_logo {

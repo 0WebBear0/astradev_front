@@ -1,31 +1,20 @@
 <template>
   <div>
     <div class="habr_container">
-      <div class="habr_item">
+      <div class="habr_item" v-for="item in habrItems" :key="item">
         <div class="habr_itemTop">
           <div class="habr_itemTopLeft">
             <div class="habr_avatar"></div>
-            <div class="habr_name">Ключевое слово</div>
+            <div class="habr_name">{{ item.title.substr(0, 27) + "..." }}</div>
           </div>
           <div class="habr_itemTopRight">
-            <div class="habr_dots">…</div>
+            <div class="habr_dots">
+              <a class="" :href="item.url"> Перейти к статье </a>
+            </div>
           </div>
         </div>
         <div class="habr_itemBody">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non aliquam
-          eaque dicta id similique asperiores distinctio accusantium labore
-          voluptate, quae sint neque laborum adipisci temporibus! In tempora
-          commodi voluptate facilis. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Non aliquam eaque dicta id similique asperiores
-          distinctio accusantium labore voluptate, quae sint neque laborum
-          adipisci temporibus! In tempora commodi voluptate facilis. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Non aliquam eaque dicta
-          id similique asperiores distinctio accusantium labore voluptate, quae
-          sint neque laborum adipisci temporibus! In tempora commodi voluptate
-          facilis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Non
-          aliquam eaque dicta id similique asperiores distinctio accusantium
-          labore voluptate, quae sint neque laborum adipisci temporibus! In
-          tempora commodi voluptate facilis.
+          {{ item.body }}
         </div>
         <div class="habr_itemBottom">
           <div class="habr_reactions">
@@ -62,6 +51,7 @@ export default {
       .then((res) => {
         console.log(res);
         this.response = res.data;
+        this.habrItems = res.data;
       })
       .catch((err) => {
         console.log(err);
@@ -77,6 +67,7 @@ export default {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1.5rem;
+    padding-bottom: 100px;
   }
   &_item {
     min-width: 50vw;
@@ -107,9 +98,11 @@ export default {
     background-image: linear-gradient(-30deg, #1f0cca, #37c627 0%, #194fe4);
   }
   &_dots {
-    font-size: 30px;
-    line-height: 20px;
+    font-size: 20px;
     cursor: pointer;
+    a {
+      color: #000;
+    }
   }
   &_itemBody {
     margin-top: 10px;
