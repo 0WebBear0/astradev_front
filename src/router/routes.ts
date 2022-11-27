@@ -11,9 +11,16 @@ const routes: RouteRecordRaw[] = [
     component: () => import("layouts/EmptyLayout.vue"),
     children: [{ path: "", component: () => import("pages/FormPage.vue") }],
   },
-
-  // Always leave this as last one,
-  // but you can also remove it
+  {
+    path: "/hh",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/HHPage.vue") }],
+  },
+  {
+    path: "/habr",
+    component: () => import("layouts/MainLayout.vue"),
+    children: [{ path: "", component: () => import("pages/HabrPage.vue") }],
+  },
   {
     path: "/:catchAll(.*)*",
     component: () => import("pages/ErrorNotFound.vue"),
